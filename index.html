@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MMA Project Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>MMA Project Management</h1>
+    <button id="addProjectBtn" class="btn">Add New Project</button>
+
+    <!-- Add Project Modal -->
+    <div id="addProjectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAddProjectModal">&times;</span>
+            <h2>Add New Project</h2>
+            <form id="addProjectForm">
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" required>
+
+                <label for="projectDescription">Description:</label>
+                <textarea id="projectDescription" ></textarea>
+
+                <button type="submit" class="btn">Add Project</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Description Modal -->
+    <div id="descriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeDescriptionModal">&times;</span>
+            <h2 id="descTitle"></h2>
+            <p id="descContent"></p>
+        </div>
+    </div>
+
+    <!-- Projects Container -->
+    <div id="projectsContainer"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
