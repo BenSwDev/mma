@@ -6,29 +6,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Notification Container -->
+<div id="notification-container"></div>
+
 <div class="container">
     <h1>MMA Project Management</h1>
     <button id="addProjectBtn" class="btn">Add New Project</button>
 
-    <!-- Add Project Modal -->
-    <div id="addProjectModal" class="modal">
+    <!-- Add/Edit Project Modal -->
+    <div id="projectModal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" id="closeAddProjectModal">&times;</span>
-            <h2>Add New Project</h2>
-            <form id="addProjectForm">
+            <span class="close" id="closeProjectModal">&times;</span>
+            <h2 id="projectModalTitle">Add New Project</h2>
+            <form id="projectForm">
                 <label for="projectName">Project Name:</label>
                 <input type="text" id="projectName" required>
 
                 <label for="projectDescription">Description:</label>
-                <textarea id="projectDescription"></textarea>
+                <textarea id="projectDescription" required></textarea>
 
-                <button type="submit" class="btn">Add Project</button>
+                <button type="submit" class="btn">Save Project</button>
             </form>
         </div>
     </div>
 
     <!-- Description Modal -->
-    <div id="descriptionModal" class="modal">
+    <div id="descriptionModal" class="modal hidden">
         <div class="modal-content">
             <span class="close" id="closeDescriptionModal">&times;</span>
             <h2 id="descTitle"></h2>
@@ -48,19 +51,19 @@
         <div id="missionsSection">
             <button id="addMissionBtn" class="btn">Add Mission</button>
 
-            <!-- Add Mission Modal -->
-            <div id="addMissionModal" class="modal">
+            <!-- Add/Edit Mission Modal -->
+            <div id="missionModal" class="modal hidden">
                 <div class="modal-content">
-                    <span class="close" id="closeAddMissionModal">&times;</span>
-                    <h2>Add New Mission</h2>
-                    <form id="addMissionForm">
+                    <span class="close" id="closeMissionModal">&times;</span>
+                    <h2 id="missionModalTitle">Add New Mission</h2>
+                    <form id="missionForm">
                         <label for="missionName">Mission Name:</label>
                         <input type="text" id="missionName" required>
 
                         <label for="missionDescription">Description:</label>
-                        <textarea id="missionDescription"></textarea>
+                        <textarea id="missionDescription" required></textarea>
 
-                        <label>Mission Type:</label>
+                        <label for="missionType">Mission Type:</label>
                         <select id="missionType" required>
                             <option value="single">Single Mission</option>
                             <option value="withSubmissions">Mission with Sub-Missions</option>
@@ -70,10 +73,27 @@
                         <div id="subMissionsSection" class="hidden">
                             <h3>Sub-Missions (Up to 5)</h3>
                             <div id="subMissionsContainer"></div>
-                            <button id="addSubMissionBtn" class="btn">Add Sub-Mission</button>
+                            <button type="button" id="addSubMissionBtn" class="btn">Add Sub-Mission</button>
                         </div>
 
-                        <button type="submit" class="btn">Add Mission</button>
+                        <button type="submit" class="btn">Save Mission</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Edit Sub-Mission Modal -->
+            <div id="editSubMissionModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" id="closeEditSubMissionModal">&times;</span>
+                    <h2>Edit Sub-Mission</h2>
+                    <form id="editSubMissionForm">
+                        <label for="editSubMissionName">Sub-Mission Name:</label>
+                        <input type="text" id="editSubMissionName" required>
+
+                        <label for="editSubMissionDescription">Description:</label>
+                        <textarea id="editSubMissionDescription" required></textarea>
+
+                        <button type="submit" class="btn">Save Changes</button>
                     </form>
                 </div>
             </div>

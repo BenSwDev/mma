@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f5f5f5;
 }
 
 /* Container */
@@ -10,13 +11,14 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 /* Heading */
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
 /* Button */
@@ -29,6 +31,8 @@ h1 {
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .btn:hover {
@@ -37,30 +41,33 @@ h1 {
 
 /* Modal Styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 2;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: 5% auto; /* 5% from the top and centered */
     padding: 20px;
+    border: 1px solid #888;
     width: 90%;
-    max-width: 500px;
+    max-width: 600px; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
     position: relative;
 }
 
+/* Close Button */
 .close {
     color: #aaa;
     position: absolute;
-    right: 15px;
+    right: 20px;
     top: 10px;
     font-size: 28px;
     font-weight: bold;
@@ -71,13 +78,14 @@ h1 {
 .close:focus {
     color: black;
     text-decoration: none;
-    cursor: pointer;
 }
 
 /* Form Styles */
 form label {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
 }
 
 form input[type="text"],
@@ -85,7 +93,37 @@ form textarea,
 form select {
     width: 100%;
     padding: 8px;
+    margin-top: 5px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+form select {
+    height: 40px;
+}
+
+/* Sub-Missions */
+.sub-mission {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.sub-mission .removeSubMissionBtn {
+    background-color: #dc3545;
+    margin-top: 5px;
+}
+
+.sub-mission .removeSubMissionBtn:hover {
+    background-color: #c82333;
 }
 
 /* Projects Grid */
@@ -98,25 +136,41 @@ form select {
 
 /* Project Card */
 .project-card {
+    background-color: #fff;
     border: 1px solid #ccc;
     padding: 15px;
     position: relative;
     cursor: pointer;
-    background-color: #fff;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .project-card h3 {
     margin-top: 0;
+    color: #007BFF;
 }
 
 .project-card p {
-    margin-bottom: 10px;
+    flex-grow: 1;
+    color: #555;
 }
 
 .project-card .read-more {
     color: #007BFF;
     text-decoration: none;
     cursor: pointer;
+    font-size: 14px;
+}
+
+.project-card .read-more:hover {
+    text-decoration: underline;
 }
 
 .project-card .buttons {
@@ -127,11 +181,29 @@ form select {
 
 .project-card .buttons .btn {
     margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.project-card .buttons .edit-btn {
+    background-color: #28a745;
+}
+
+.project-card .buttons .edit-btn:hover {
+    background-color: #218838;
+}
+
+.project-card .buttons .delete-btn {
+    background-color: #dc3545;
+}
+
+.project-card .buttons .delete-btn:hover {
+    background-color: #c82333;
 }
 
 /* Progress Bar */
 .progress-bar {
-    background-color: #f3f3f3;
+    background-color: #e9ecef;
     width: 100%;
     height: 10px;
     border-radius: 5px;
@@ -139,29 +211,38 @@ form select {
 }
 
 .progress-bar .progress {
-    background-color: #4caf50;
+    background-color: #28a745;
     width: 0%;
     height: 100%;
     border-radius: 5px;
+    transition: width 0.3s;
 }
 
 /* Project Content Area */
 .project-content-area {
-    background-color: #f9f9f9;
+    background-color: #fff;
     padding: 20px;
     margin-top: 20px;
     position: relative;
     border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .project-content-area .close {
     color: #aaa;
     position: absolute;
-    right: 15px;
+    right: 20px;
     top: 10px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.project-content-area .close:hover,
+.project-content-area .close:focus {
+    color: black;
+    text-decoration: none;
 }
 
 .hidden {
@@ -172,31 +253,234 @@ form select {
 .mission {
     border: 1px solid #ccc;
     padding: 15px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
 }
 
 .mission h3 {
     margin-top: 0;
+    color: #17a2b8;
+}
+
+.mission p {
+    color: #555;
+}
+
+.mission .mission-buttons {
+    margin-top: 10px;
 }
 
 .mission .mission-buttons .btn {
     margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.mission .mission-buttons .edit-mission-btn {
+    background-color: #ffc107;
+}
+
+.mission .mission-buttons .edit-mission-btn:hover {
+    background-color: #e0a800;
+}
+
+.mission .mission-buttons .delete-mission-btn {
+    background-color: #dc3545;
+}
+
+.mission .mission-buttons .delete-mission-btn:hover {
+    background-color: #c82333;
+}
+
+.mission .mission-buttons .start-mission-btn {
+    background-color: #28a745;
+}
+
+.mission .mission-buttons .start-mission-btn:hover {
+    background-color: #218838;
+}
+
+.mission .mission-buttons .mark-done-mission-btn {
+    background-color: #28a745;
+}
+
+.mission .mission-buttons .mark-done-mission-btn:hover {
+    background-color: #218838;
+}
+
+.mission .mission-buttons .reset-mission-btn {
+    background-color: #6c757d;
+}
+
+.mission .mission-buttons .reset-mission-btn:hover {
+    background-color: #5a6268;
+}
+
+.mission .mission-buttons .reopen-mission-btn {
+    background-color: #17a2b8;
+}
+
+.mission .mission-buttons .reopen-mission-btn:hover {
+    background-color: #138496;
 }
 
 /* Sub-Missions */
-.sub-mission {
-    border: 1px dashed #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+.sub-mission-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 10px;
 }
 
-.sub-mission .btn {
+.sub-mission-list li {
+    background-color: #e2e3e5;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.sub-mission-list li strong {
+    color: #17a2b8;
+}
+
+.sub-mission-list li .sub-mission-buttons {
     margin-top: 5px;
 }
 
+.sub-mission-list li .sub-mission-buttons .btn {
+    margin-right: 5px;
+    padding: 3px 7px;
+    font-size: 10px;
+}
+
+.sub-mission-list li .sub-mission-buttons .edit-submission-btn {
+    background-color: #ffc107;
+}
+
+.sub-mission-list li .sub-mission-buttons .edit-submission-btn:hover {
+    background-color: #e0a800;
+}
+
+.sub-mission-list li .sub-mission-buttons .delete-submission-btn {
+    background-color: #dc3545;
+}
+
+.sub-mission-list li .sub-mission-buttons .delete-submission-btn:hover {
+    background-color: #c82333;
+}
+
+.sub-mission-list li .sub-mission-buttons .start-submission-btn {
+    background-color: #28a745;
+}
+
+.sub-mission-list li .sub-mission-buttons .start-submission-btn:hover {
+    background-color: #218838;
+}
+
+.sub-mission-list li .sub-mission-buttons .mark-done-submission-btn {
+    background-color: #28a745;
+}
+
+.sub-mission-list li .sub-mission-buttons .mark-done-submission-btn:hover {
+    background-color: #218838;
+}
+
+.sub-mission-list li .sub-mission-buttons .reset-submission-btn {
+    background-color: #6c757d;
+}
+
+.sub-mission-list li .sub-mission-buttons .reset-submission-btn:hover {
+    background-color: #5a6268;
+}
+
+.sub-mission-list li .sub-mission-buttons .reopen-submission-btn {
+    background-color: #17a2b8;
+}
+
+.sub-mission-list li .sub-mission-buttons .reopen-submission-btn:hover {
+    background-color: #138496;
+}
+
+/* Notification Styles */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.notification {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadein 0.5s, fadeout 0.5s 3s;
+}
+
+.notification.success {
+    border-left: 5px solid #28a745;
+}
+
+.notification.error {
+    border-left: 5px solid #dc3545;
+}
+
+.notification.info {
+    border-left: 5px solid #17a2b8;
+}
+
+.notification .close-notification {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@keyframes fadein {
+    from { opacity: 0; right: 0; }
+    to { opacity: 1; right: 20px; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; right: 20px; }
+    to { opacity: 0; right: 0; }
+}
+
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .project-content-area {
+        padding: 15px;
+    }
+}
+
 @media (max-width: 600px) {
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-content-area {
+        padding: 10px;
     }
 }
