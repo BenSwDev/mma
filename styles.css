@@ -28,6 +28,7 @@ h1 {
     border: none;
     cursor: pointer;
     text-align: center;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -38,7 +39,7 @@ h1 {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100%;
@@ -49,7 +50,7 @@ h1 {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 90%;
     max-width: 500px;
@@ -80,14 +81,18 @@ form label {
 }
 
 form input[type="text"],
-form textarea {
+form textarea,
+form select {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
 }
 
-/* Projects Container */
-#projectsContainer {
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
     margin-top: 20px;
 }
 
@@ -95,8 +100,9 @@ form textarea {
 .project-card {
     border: 1px solid #ccc;
     padding: 15px;
-    margin-bottom: 15px;
     position: relative;
+    cursor: pointer;
+    background-color: #fff;
 }
 
 .project-card h3 {
@@ -129,6 +135,7 @@ form textarea {
     width: 100%;
     height: 10px;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 .progress-bar .progress {
@@ -138,14 +145,58 @@ form textarea {
     border-radius: 5px;
 }
 
+/* Project Content Area */
+.project-content-area {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.project-content-area .close {
+    color: #aaa;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Missions */
+.mission {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.mission h3 {
+    margin-top: 0;
+}
+
+.mission .mission-buttons .btn {
+    margin-right: 5px;
+}
+
+/* Sub-Missions */
+.sub-mission {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.sub-mission .btn {
+    margin-top: 5px;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
-    .project-card .buttons {
-        position: static;
-        margin-top: 10px;
-    }
-
-    .project-card {
-        padding-bottom: 50px;
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 }

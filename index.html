@@ -20,7 +20,7 @@
                 <input type="text" id="projectName" required>
 
                 <label for="projectDescription">Description:</label>
-                <textarea id="projectDescription" ></textarea>
+                <textarea id="projectDescription"></textarea>
 
                 <button type="submit" class="btn">Add Project</button>
             </form>
@@ -37,7 +37,51 @@
     </div>
 
     <!-- Projects Container -->
-    <div id="projectsContainer"></div>
+    <div id="projectsContainer" class="projects-grid"></div>
+
+    <!-- Project Content Area -->
+    <div id="projectContentArea" class="project-content-area hidden">
+        <span class="close" id="closeProjectContentArea">&times;</span>
+        <h2 id="projectContentTitle"></h2>
+
+        <!-- Missions Section -->
+        <div id="missionsSection">
+            <button id="addMissionBtn" class="btn">Add Mission</button>
+
+            <!-- Add Mission Modal -->
+            <div id="addMissionModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeAddMissionModal">&times;</span>
+                    <h2>Add New Mission</h2>
+                    <form id="addMissionForm">
+                        <label for="missionName">Mission Name:</label>
+                        <input type="text" id="missionName" required>
+
+                        <label for="missionDescription">Description:</label>
+                        <textarea id="missionDescription"></textarea>
+
+                        <label>Mission Type:</label>
+                        <select id="missionType" required>
+                            <option value="single">Single Mission</option>
+                            <option value="withSubmissions">Mission with Sub-Missions</option>
+                        </select>
+
+                        <!-- Sub-Missions Section -->
+                        <div id="subMissionsSection" class="hidden">
+                            <h3>Sub-Missions (Up to 5)</h3>
+                            <div id="subMissionsContainer"></div>
+                            <button id="addSubMissionBtn" class="btn">Add Sub-Mission</button>
+                        </div>
+
+                        <button type="submit" class="btn">Add Mission</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Missions Container -->
+            <div id="missionsContainer"></div>
+        </div>
+    </div>
 </div>
 
 <script src="app.js"></script>
