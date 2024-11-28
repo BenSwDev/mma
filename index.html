@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <title>MMA Project Management</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Notification Container -->
-<div id="notification-container"></div>
-
 <div class="container">
     <h1>MMA Project Management</h1>
     <button id="addProjectBtn" class="btn">Add New Project</button>
@@ -39,6 +36,80 @@
         </div>
     </div>
 
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeConfirmationModal">&times;</span>
+            <h2>Confirm Action</h2>
+            <p id="confirmationMessage"></p>
+            <div class="confirmation-buttons">
+                <button id="confirmYesBtn" class="btn">Yes</button>
+                <button id="confirmNoBtn" class="btn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Mission Modal -->
+    <div id="missionModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeMissionModal">&times;</span>
+            <h2 id="missionModalTitle">Add New Mission</h2>
+            <form id="missionForm">
+                <label for="missionName">Mission Name:</label>
+                <input type="text" id="missionName" required>
+
+                <label for="missionDescription">Description:</label>
+                <textarea id="missionDescription" required></textarea>
+
+                <label for="missionType">Mission Type:</label>
+                <select id="missionType" required>
+                    <option value="single">Single Mission</option>
+                    <option value="withSubmissions">Mission with Sub-Missions</option>
+                </select>
+
+                <!-- Sub-Missions Section -->
+                <div id="subMissionsSection" class="hidden">
+                    <h3>Sub-Missions (Up to 5)</h3>
+                    <div id="subMissionsContainer"></div>
+                    <button type="button" id="addSubMissionBtn" class="btn">Add Sub-Mission</button>
+                </div>
+
+                <button type="submit" class="btn">Save Mission</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Sub-Missions Modal -->
+    <div id="subMissionsEditModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeSubMissionsEditModal">&times;</span>
+            <h2>Edit Sub-Missions</h2>
+            <button type="button" id="addSubMissionBtnEdit" class="btn">Add Sub-Mission</button>
+            <div id="subMissionsEditContainer"></div>
+            <button type="button" id="saveSubMissionsBtn" class="btn">Save Sub-Missions</button>
+        </div>
+    </div>
+
+    <!-- Edit Sub-Mission Modal -->
+    <div id="editSubMissionModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeEditSubMissionModal">&times;</span>
+            <h2>Edit Sub-Mission</h2>
+            <form id="editSubMissionForm">
+                <label for="editSubMissionName">Sub-Mission Name:</label>
+                <input type="text" id="editSubMissionName" required>
+
+                <label for="editSubMissionDescription">Description:</label>
+                <textarea id="editSubMissionDescription" ></textarea>
+
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
     <!-- Projects Container -->
     <div id="projectsContainer" class="projects-grid"></div>
 
@@ -51,55 +122,11 @@
         <div id="missionsSection">
             <button id="addMissionBtn" class="btn">Add Mission</button>
 
-            <!-- Add/Edit Mission Modal -->
-            <div id="missionModal" class="modal hidden">
-                <div class="modal-content">
-                    <span class="close" id="closeMissionModal">&times;</span>
-                    <h2 id="missionModalTitle">Add New Mission</h2>
-                    <form id="missionForm">
-                        <label for="missionName">Mission Name:</label>
-                        <input type="text" id="missionName" required>
-
-                        <label for="missionDescription">Description:</label>
-                        <textarea id="missionDescription" required></textarea>
-
-                        <label for="missionType">Mission Type:</label>
-                        <select id="missionType" required>
-                            <option value="single">Single Mission</option>
-                            <option value="withSubmissions">Mission with Sub-Missions</option>
-                        </select>
-
-                        <!-- Sub-Missions Section -->
-                        <div id="subMissionsSection" class="hidden">
-                            <h3>Sub-Missions (Up to 5)</h3>
-                            <div id="subMissionsContainer"></div>
-                            <button type="button" id="addSubMissionBtn" class="btn">Add Sub-Mission</button>
-                        </div>
-
-                        <button type="submit" class="btn">Save Mission</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Edit Sub-Mission Modal -->
-            <div id="editSubMissionModal" class="modal hidden">
-                <div class="modal-content">
-                    <span class="close" id="closeEditSubMissionModal">&times;</span>
-                    <h2>Edit Sub-Mission</h2>
-                    <form id="editSubMissionForm">
-                        <label for="editSubMissionName">Sub-Mission Name:</label>
-                        <input type="text" id="editSubMissionName" required>
-
-                        <label for="editSubMissionDescription">Description:</label>
-                        <textarea id="editSubMissionDescription" required></textarea>
-
-                        <button type="submit" class="btn">Save Changes</button>
-                    </form>
-                </div>
-            </div>
 
             <!-- Missions Container -->
             <div id="missionsContainer"></div>
+
+
         </div>
     </div>
 </div>
