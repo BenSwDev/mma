@@ -1,103 +1,79 @@
-/* ===================================================
-   MMA Project Management - Professional CSS
-   ===================================================
-   Author: Ben Swissa (Updated by ChatGPT)
-   Description: Comprehensive CSS for MMA Project Management with specific enhancements:
-                1. Fixed modal positioning.
-                2. Implemented consistent button colors.
-                3. Adjusted button placements.
-   =================================================== */
+/* ----------------------------
+   Reset and Base Styles
+---------------------------- */
 
-/* CSS Variables for Consistent Theming */
-:root {
-    --primary-color: #4A90E2; /* Soft Blue */
-    --secondary-color: #50E3C2; /* Mint Green */
-    --accent-color: #F5A623; /* Warm Orange */
-    --danger-color: #D0021B; /* Red */
-    --success-color: #7ED321; /* Green */
-    --warning-color: #F8E71C; /* Yellow */
-    --info-color: #9013FE; /* Purple */
-    --background-color: #F0F2F5; /* Light Gray */
-    --text-color: #333333; /* Dark Gray */
-    --light-text-color: #666666; /* Medium Gray */
-    --border-color: #E1E8ED; /* Light Border */
-    --modal-overlay: rgba(0, 0, 0, 0.6);
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --transition-speed: 0.3s;
-    --border-radius: 8px;
-}
-
-/* Reset and Base Styles */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+/* CSS Reset for consistency across browsers */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
     line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* Container */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* ----------------------------
+   Typography
+---------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2c3e50;
 }
 
-/* Heading */
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    position: relative;
-    display: inline-block;
+p {
+    margin-bottom: 15px;
 }
 
-h1::after {
-    content: '';
-    width: 60px;
-    height: 4px;
-    background: var(--secondary-color);
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    border-radius: 2px;
+a {
+    color: #3498db;
+    text-decoration: none;
 }
 
-/* Buttons */
+a:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------
+   Buttons
+---------------------------- */
+
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px;
-    background: var(--primary-color);
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* Default Blue */
     color: #fff;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background var(--transition-speed), transform var(--transition-speed);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
     text-decoration: none;
 }
 
 .btn:hover {
-    background: #3a7bd5; /* Slightly darker blue */
     transform: translateY(-2px);
 }
 
@@ -105,652 +81,681 @@ h1::after {
     transform: translateY(0);
 }
 
-.btn:disabled {
-    background: var(--border-color);
-    cursor: not-allowed;
+.btn.secondary {
+    background-color: #95a5a6;
 }
 
-/* Specific Button Colors */
-.edit-btn {
-    background: #F8C471; /* Orange-Yellow */
+.btn.secondary:hover {
+    background-color: #7f8c8d;
 }
 
-.edit-btn:hover {
-    background: #e6b25b; /* Slightly darker orange-yellow */
+.btn.danger {
+    background-color: #e74c3c;
 }
 
-.delete-btn {
-    background: var(--danger-color); /* Red */
+.btn.danger:hover {
+    background-color: #c0392b;
 }
 
-.delete-btn:hover {
-    background: #a71d21; /* Slightly darker red */
+/* ----------------------------
+   Button Color Classes
+---------------------------- */
+
+/* Add Button - Blue */
+.btn.add-btn,
+#addProjectBtn,
+#addMissionBtn,
+#addSubMissionBtnEdit,
+.add-submission-btn {
+    background-color: #3498db; /* Blue */
 }
 
-.add-btn {
-    background: var(--primary-color); /* Blue */
+.btn.add-btn:hover,
+#addProjectBtn:hover,
+#addMissionBtn:hover,
+#addSubMissionBtnEdit:hover,
+.add-submission-btn:hover {
+    background-color: #2980b9;
 }
 
-.add-btn:hover {
-    background: #3a7bd5; /* Slightly darker blue */
+/* Edit Button - Yellow */
+.btn.edit-btn,
+.edit-mission-btn,
+.edit-submission-btn {
+    background-color: #f1c40f; /* Yellow */
+    color: #fff; /* Ensure text is readable */
 }
 
-.reopen-btn {
-    background: var(--info-color); /* Purple */
+.btn.edit-btn:hover,
+.edit-mission-btn:hover,
+.edit-submission-btn:hover {
+    background-color: #d4ac0d;
 }
 
-.reopen-btn:hover {
-    background: #7a0fcc; /* Slightly darker purple */
+/* Delete Button - Red */
+.btn.delete-btn,
+.delete-mission-btn,
+.delete-submission-btn {
+    background-color: #e74c3c; /* Red */
 }
 
-.start-btn,
-.done-btn {
-    background: var(--success-color); /* Green */
+.btn.delete-btn:hover,
+.delete-mission-btn:hover,
+.delete-submission-btn:hover {
+    background-color: #c0392b;
 }
 
-.start-btn:hover,
-.done-btn:hover {
-    background: #6fbf1e; /* Slightly darker green */
+/* Done/Start Button - Green */
+.btn.done-btn,
+.btn.start-btn,
+.start-mission-btn,
+.mark-done-mission-btn,
+.start-submission-btn,
+.mark-done-submission-btn {
+    background-color: #27ae60; /* Green */
 }
 
-/* Modal Styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Ensures modal overlays the entire viewport */
-    z-index: 2000; /* Increased z-index to overlay all content */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    background: var(--modal-overlay);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-speed), visibility var(--transition-speed);
+.btn.done-btn:hover,
+.btn.start-btn:hover,
+.start-mission-btn:hover,
+.mark-done-mission-btn:hover,
+.start-submission-btn:hover,
+.mark-done-submission-btn:hover {
+    background-color: #1e8449;
 }
 
-.modal:not(.hidden) {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    animation: fadeIn 0.3s forwards;
+/* Reopen/Restart Button - Purple */
+.btn.reopen-btn,
+.btn.restart-btn,
+.reopen-mission-btn,
+.reset-mission-btn,
+.reopen-submission-btn,
+.reset-submission-btn {
+    background-color: #9b59b6; /* Purple */
 }
 
-.modal-content {
-    background: #fff;
-    margin: 80px auto;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    max-width: 600px;
-    position: relative;
-    animation: slideDown 0.4s ease-out forwards;
+.btn.reopen-btn:hover,
+.btn.restart-btn:hover,
+.reopen-mission-btn:hover,
+.reset-mission-btn:hover,
+.reopen-submission-btn:hover,
+.reset-submission-btn:hover {
+    background-color: #8e44ad;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* ----------------------------
+   Layout Components
+---------------------------- */
+
+/* Header */
+.container > h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #34495e;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Add Project Button */
+#addProjectBtn {
+    margin-bottom: 20px;
 }
 
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
-/* Close Button */
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: var(--light-text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color var(--transition-speed);
-}
-
-.close:hover {
-    color: var(--text-color);
-}
-
-/* Form Styles */
-form {
+/* Project Card */
+.project-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* For positioning action buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-form label {
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.project-card .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.project-card .buttons .btn {
+    margin: 0;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background-color: #ecf0f1;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 10px;
     margin-top: 15px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background-color: #27ae60;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+/* ----------------------------
+   Modals
+---------------------------- */
+
+.modal {
+    display: flex; /* Use Flexbox for centering */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: fadeInScale 0.3s ease forwards;
+    cursor: default;
+}
+
+.modal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer; /* Indicate clickable background */
+}
+
+.modal-content {
+    pointer-events: auto; /* Allow interaction inside modal */
+}
+
+/* Close Button */
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal .close:hover {
+    color: #555;
+}
+
+/* Animation for modal appearance */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ----------------------------
+   Form Styles
+---------------------------- */
+
+form label {
+    display: block;
     margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--text-color);
+    font-weight: 500;
+    color: #2c3e50;
 }
 
 form input[type="text"],
 form textarea,
 form select {
     width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
     font-size: 1rem;
-    transition: border-color var(--transition-speed);
+    transition: border-color 0.2s ease;
 }
 
 form input[type="text"]:focus,
 form textarea:focus,
 form select:focus {
-    border-color: var(--primary-color);
+    border-color: #3498db;
     outline: none;
 }
 
 form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
 }
 
-form select {
-    height: 44px;
-    background: #fff;
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path fill="%23333333" d="M0 0l5 6 5-6z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 10px 6px;
+form button[type="submit"],
+form button[type="button"] {
+    margin-top: 10px;
 }
 
-/* Sub-Missions */
+/* Sub-Missions Section */
+#subMissionsSection {
+    margin-top: 20px;
+}
+
 .sub-mission {
-    border: 1px dashed var(--border-color);
+    background-color: #f9f9f9;
     padding: 15px;
-    margin-top: 10px;
-    border-radius: var(--border-radius);
-    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
     position: relative;
-    transition: background-color var(--transition-speed);
 }
 
-.sub-mission:hover {
-    background-color: #f0f0f0;
+.sub-mission label {
+    font-weight: 400;
 }
 
-.sub-mission .removeSubMissionBtn {
-    background: var(--danger-color); /* Red */
+.removeSubMissionBtn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
     margin-top: 10px;
 }
 
-.sub-mission .removeSubMissionBtn:hover {
-    background: #a71d21; /* Slightly darker red */
+.removeSubMissionBtn:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
 }
 
-/* Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+/* ----------------------------
+   Notifications
+---------------------------- */
+
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
 }
 
-/* Project Card */
-.project-card {
-    background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    cursor: pointer;
+.toast {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    min-width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    animation: slideIn 0.5s forwards, fadeOut 0.5s 3.5s forwards;
+}
+
+.toast.error {
+    background-color: #e74c3c;
+}
+
+.toast.info {
+    background-color: #3498db;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ----------------------------
+   Confirmation Modal Buttons
+---------------------------- */
+
+.confirmation-buttons {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.confirmation-buttons .btn {
+    min-width: 80px;
 }
 
-.project-card h3 {
-    margin-bottom: 15px;
-    color: var(--primary-color);
+.confirmation-buttons .btn:first-child {
+    background-color: #27ae60; /* Yes - Green */
+}
+
+.confirmation-buttons .btn:first-child:hover {
+    background-color: #1e8449;
+}
+
+.confirmation-buttons .btn:last-child {
+    background-color: #e74c3c; /* No - Red */
+}
+
+.confirmation-buttons .btn:last-child:hover {
+    background-color: #c0392b;
+}
+
+/* ----------------------------
+   Project Content Area
+---------------------------- */
+
+.project-content-area {
+    position: relative; /* Changed from fixed to relative */
+    background-color: #fff;
+    z-index: 1; /* Ensure it sits beneath modals and overlays */
+    padding: 30px;
+    overflow-y: auto;
+    margin-top: 20px; /* Space from project cards */
+    box-shadow: none; /* Remove shadow to blend with main content */
+    display: none; /* Hidden by default */
+}
+
+.project-content-area.visible {
+    display: block; /* Show when active */
+}
+
+/* Close button for Project Content Area */
+#closeProjectContentArea {
+    position: absolute;
+    top: 20px;
+    right: 30px;
     font-size: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.project-card p {
-    color: var(--light-text-color);
-    flex-grow: 1;
-    transition: color var(--transition-speed);
+#closeProjectContentArea:hover {
+    color: #555;
 }
 
-.project-card p:hover {
-    color: var(--text-color);
-}
-
-.project-card .read-more {
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-speed);
-}
-
-.project-card .read-more:hover {
-    color: #3bb2a1; /* Slightly darker mint green */
-}
-
-.project-card .buttons {
+.prject-title-in-content-area {
     display: flex;
     gap: 10px;
 }
 
-/* Progress Bar */
-.progress-bar {
-    background: #e9ecef;
-    width: 100%;
-    height: 12px;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    margin-top: 15px;
+.project-content-area h2 {
+    margin-bottom: 25px;
+    font-size: 2rem;
+    color: #2c3e50;
 }
 
-.progress-bar .progress {
-    background: var(--success-color);
-    width: 0%;
-    height: 100%;
-    transition: width var(--transition-speed);
-}
-
-/* Project Content Area */
-.project-content-area {
-    background: #fff;
-    padding: 25px;
-    margin-top: 30px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    animation: fadeIn 0.4s ease-out forwards;
-}
-
-.project-content-area.hidden {
-    display: none;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Missions */
-.mission {
-    border: 1px solid var(--border-color);
-    padding: 20px;
+/* Missions Section */
+#missionsSection {
     margin-top: 20px;
-    border-radius: var(--border-radius);
-    background-color: #f9fafb;
-    transition: background-color var(--transition-speed);
-    position: relative; /* Added to position buttons */
 }
 
-.mission:hover {
-    background-color: #f1f3f5;
+#addMissionBtn {
+    margin-bottom: 20px;
+}
+
+/* Mission */
+.mission {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #ecf0f1;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .mission h3 {
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-    font-size: 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 1.3rem;
+    color: #34495e;
+    margin: 0;
 }
 
-.mission p {
-    color: var(--light-text-color);
-}
-
-.mission .buttons {
+.mission .mission-buttons {
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 
-/* Sub-Mission List */
-.sub-mission-list {
-    list-style: none;
-    padding-left: 0;
+.mission .mission-buttons .btn {
+    margin: 0;
+}
+
+/* Sub-Missions */
+.sub-missions {
     margin-top: 15px;
+    padding-left: 20px;
+}
+
+.sub-mission-list {
+    list-style: disc inside;
+    margin-top: 10px;
 }
 
 .sub-mission-list li {
-    background-color: #e8f5e9;
-    padding: 12px 16px;
-    margin-bottom: 8px;
-    border-radius: var(--border-radius);
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color var(--transition-speed);
-}
-
-.sub-mission-list li:hover {
-    background-color: #dcedc8;
+    position: relative;
+    padding-right: 150px; /* Space for action buttons */
+    margin-bottom: 10px;
+    color: #555;
 }
 
 .sub-mission-list li strong {
-    color: var(--info-color);
+    font-weight: bold;
+}
+
+.submission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sub-mission-list li .sub-mission-buttons {
+    position: absolute;
+    right: 0;
     display: flex;
     gap: 5px;
 }
 
 .sub-mission-list li .sub-mission-buttons .btn {
-    padding: 6px 10px;
-    font-size: 0.75rem;
+    padding: 5px 10px;
+    font-size: 0.8rem;
 }
 
-/* Notification Container */
-#notificationContainer {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 3000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
-/* Notification Toast */
-.toast {
-    background-color: #343a40;
-    color: #fff;
-    padding: 16px 20px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    opacity: 0;
-    transform: translateX(100%);
-    animation: slideIn 0.5s forwards, fadeOut 0.5s 3.5s forwards;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+/* ----------------------------
+   Responsive Design
+---------------------------- */
 
-.toast.success {
-    background-color: var(--success-color);
-}
-
-.toast.error {
-    background-color: var(--danger-color);
-}
-
-.toast.info {
-    background-color: var(--info-color);
-}
-
-.toast.warning {
-    background-color: var(--warning-color);
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
+/* Tablet Devices */
+@media (max-width: 1024px) {
+    .container {
+        padding: 18px;
     }
-}
 
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-}
-
-/* Confirmation Modal Buttons */
-.confirmation-buttons {
-    margin-top: 25px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-.confirmation-buttons .btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-}
-
-.confirmation-buttons #confirmYesBtn {
-    background: var(--danger-color);
-}
-
-.confirmation-buttons #confirmYesBtn:hover {
-    background: #a71d21; /* Slightly darker red */
-}
-
-.confirmation-buttons #confirmNoBtn {
-    background: var(--secondary-color);
-}
-
-.confirmation-buttons #confirmNoBtn:hover {
-    background: #3bb2a1; /* Slightly darker mint green */
-}
-
-/* Responsive Design */
-
-/* Large Screens (Desktop) */
-@media (min-width: 992px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-}
-
-/* Medium Screens (Tablet) */
-@media (min-width: 768px) and (max-width: 991px) {
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    .project-card {
+        padding: 18px;
     }
 
     .project-card h3 {
         font-size: 1.4rem;
     }
 
-    .btn {
-        font-size: 0.95rem;
+    .project-content-area {
+        padding: 25px;
+    }
+
+    .mission h3 {
+        font-size: 1.25rem;
     }
 }
 
-/* Small Screens (Mobile) */
-@media (max-width: 767px) {
+/* Tablet and Mobile Devices */
+@media (max-width: 768px) {
     .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
+        padding: 15px;
     }
 
     .modal-content {
-        margin: 60px 20px;
         padding: 20px;
     }
 
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-content-area {
+        padding: 20px;
+    }
+
+    .mission h3 {
+        font-size: 1.2rem;
+    }
+
     .btn {
-        width: 100%;
-        justify-content: center;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 20px;
     }
 
-    .confirmation-buttons {
-        flex-direction: column;
-        align-items: stretch;
+    /* Adjust action buttons on smaller screens */
+    .project-card .buttons,
+    .mission .mission-buttons,
+    .sub-mission-list li .sub-mission-buttons {
+        flex-wrap: wrap;
     }
 
-    .confirmation-buttons .btn {
-        width: 100%;
+    .sub-mission-list li {
+        padding-right: 100px; /* Reduce space for action buttons */
+    }
+
+    .sub-mission-list li .sub-mission-buttons .btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+    #closeProjectContentArea {
+        top: 10px;
+        right: 20px;
+    }
+
+    .project-content-area h2 {
+        font-size: 1.5rem;
+    }
+
+    .toast {
+        min-width: 200px;
     }
 }
 
-/* Utility Classes */
-.hidden {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
 
-.flex {
-    display: flex;
-}
+    .project-card {
+        padding: 15px;
+    }
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .project-card h3 {
+        font-size: 1.2rem;
+    }
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
+    .mission h3 {
+        font-size: 1.1rem;
+    }
 
-.text-center {
-    text-align: center;
-}
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
 
-.mt-20 {
-    margin-top: 20px;
-}
+    .sub-mission-list li {
+        padding-right: 80px;
+    }
 
-.mb-20 {
-    margin-bottom: 20px;
-}
+    .sub-mission-list li .sub-mission-buttons .btn {
+        padding: 3px 6px;
+        font-size: 0.6rem;
+    }
 
-.p-20 {
-    padding: 20px;
-}
+    .project-content-area h2 {
+        font-size: 1.3rem;
+    }
 
-.rounded {
-    border-radius: var(--border-radius);
-}
+    #closeProjectContentArea {
+        top: 5px;
+        right: 15px;
+    }
 
-/* Additional Enhancements */
-
-/* Scrollbar Styling for Modals */
-.modal::-webkit-scrollbar {
-    width: 8px;
-}
-
-.modal::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: var(--border-radius);
-}
-
-.modal::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: var(--border-radius);
-}
-
-.modal::-webkit-scrollbar-thumb:hover {
-    background: #3a7bd5;
-}
-
-/* Tooltip for Buttons */
-.btn[data-tooltip] {
-    position: relative;
-}
-
-.btn[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--light-text-color);
-    color: #fff;
-    padding: 6px 8px;
-    border-radius: var(--border-radius);
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-speed);
-    font-size: 0.75rem;
-    pointer-events: none;
-    z-index: 1001;
-}
-
-.btn[data-tooltip]:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Enhanced Input Focus */
-form input[type="text"]:focus,
-form textarea:focus,
-form select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-}
-
-/* Enhanced Project Card Description */
-.project-card p {
-    color: var(--light-text-color);
-    flex-grow: 1;
-    transition: color var(--transition-speed);
-}
-
-.project-card p:hover {
-    color: var(--text-color);
-}
-
-/* Smooth Hover Effects for Sub-Missions */
-.sub-mission:hover {
-    background-color: #f0f0f0;
-}
-
-/* Animation for Adding/Removing Sub-Missions */
-.sub-mission {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.sub-mission.removed {
-    animation: fadeOut 0.3s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-10px); }
+    .toast {
+        min-width: 180px;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
 }

@@ -222,7 +222,7 @@ $('#addMissionBtn').addEventListener('click', () => {
 
     // During mission creation, set mission type to 'single' and disable mission type select
     $('#missionType').value = 'single';
-    $('#missionType').disabled = true;
+    $('#missionType').disabled = false;
     hideElement($('#subMissionsSection'));
     $('#subMissionsContainer').innerHTML = '';
     updateSubMissionsCount();
@@ -577,17 +577,21 @@ function displayMissions() {
         }
 
         missionDiv.innerHTML = `
-            <h3>${mission.name}</h3>
-            <p>${mission.description}</p>
-            ${isSingle ? `<p>Status: <strong>${capitalize(mission.status)}</strong></p>` : ''}
             <div class="mission-buttons">
+                <h3>${mission.name}</h3>
                 ${missionButtonsHTML}
             </div>
+
+            <p>${mission.description}</p>
+            ${isSingle ? `<p>Status: <strong>${capitalize(mission.status)}</strong></p>` : ''}
+
             ${mission.type === 'withSubmissions' ? `
                 <div class="sub-missions">
-                    <h4>Sub-Missions</h4>
-                    <button class="btn add-submission-btn" data-mission-index="${mIndex}">Add Sub-Mission</button>
-                    <p id="subMissionsCount-${mIndex}">You can add ${10 - mission.subMissions.length} more sub-mission(s).</p>
+                    <div class="mission-buttons">
+                        <h4>Sub-Missions</h4>
+                        <p id="subMissionsCount-${mIndex}">You can add ${10 - mission.subMissions.length} more sub-mission(s).</p>
+                        <button class="btn add-submission-btn" data-mission-index="${mIndex}">Add Sub-Mission</button>
+                    </div>
                     <ul class="sub-mission-list">
                         ${mission.subMissions.map((sub, sIndex) => `
                             <li>
@@ -961,15 +965,16 @@ function displayProjects() {
             : project.description;
 
         projectCard.innerHTML = `
-            <h3>${project.name}</h3>
+            <div class="buttons">
+                <h3>${project.name}</h3>
+                <button class="btn edit-btn" data-index="${index}">Edit</button>
+                <button class="btn delete-btn" data-index="${index}">Delete</button>
+            </div>
             <p>
                 ${descriptionPreview}
                 ${project.description.length > 100 ? `<a href="#" class="read-more" data-index="${index}">Read More</a>` : ''}
             </p>
-            <div class="buttons">
-                <button class="btn edit-btn" data-index="${index}">Edit</button>
-                <button class="btn delete-btn" data-index="${index}">Delete</button>
-            </div>
+
             <div class="progress-bar">
                 <div class="progress" style="width: ${project.progress}%"></div>
             </div>

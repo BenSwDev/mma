@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>MMA Project Management</title>
@@ -8,7 +8,38 @@
 <body>
 <div class="container">
     <h1>MMA Project Management</h1>
+
+    <!-- Main Section Starts -->
+    <!-- Add Here the In progress table -->
+    <!-- Main Section End -->
+
+    <!-- Projects Section Starts -->
+    <section class="project-section">
+
     <button id="addProjectBtn" class="btn">Add New Project</button>
+
+    <!-- Projects Container -->
+    <div id="projectsContainer" class="projects-grid"></div>
+
+    <!-- Project Content Area -->
+    <div id="projectContentArea" class="project-content-area hidden">
+        <span class="close" id="closeProjectContentArea">&times;</span>
+        <div class="prject-title-in-content-area">
+            <h2 id="projectContentTitle"></h2>
+            <button id="addMissionBtn" class="btn">Add Mission</button>
+        </div>
+
+        <!-- Missions Section -->
+        <div id="missionsSection">
+
+
+            <!-- Missions Container -->
+            <div id="missionsContainer"></div>
+
+
+        </div>
+    </div>
+
 
     <!-- Add/Edit Project Modal -->
     <div id="projectModal" class="modal hidden">
@@ -20,7 +51,7 @@
                 <input type="text" id="projectName" required>
 
                 <label for="projectDescription">Description:</label>
-                <textarea id="projectDescription" required></textarea>
+                <textarea id="projectDescription" ></textarea>
 
                 <button type="submit" class="btn">Save Project</button>
             </form>
@@ -59,7 +90,7 @@
                 <input type="text" id="missionName" required>
 
                 <label for="missionDescription">Description:</label>
-                <textarea id="missionDescription" required></textarea>
+                <textarea id="missionDescription" ></textarea>
 
                 <label for="missionType">Mission Type:</label>
                 <select id="missionType" required>
@@ -109,26 +140,10 @@
 
     <!-- Notification Container -->
     <div id="notificationContainer"></div>
-
-    <!-- Projects Container -->
-    <div id="projectsContainer" class="projects-grid"></div>
-
-    <!-- Project Content Area -->
-    <div id="projectContentArea" class="project-content-area hidden">
-        <span class="close" id="closeProjectContentArea">&times;</span>
-        <h2 id="projectContentTitle"></h2>
-
-        <!-- Missions Section -->
-        <div id="missionsSection">
-            <button id="addMissionBtn" class="btn">Add Mission</button>
+    </section>
+    <!-- Projects Section Ends -->
 
 
-            <!-- Missions Container -->
-            <div id="missionsContainer"></div>
-
-
-        </div>
-    </div>
 </div>
 
 <script src="app.js"></script>
